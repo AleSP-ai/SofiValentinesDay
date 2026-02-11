@@ -2,23 +2,25 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const gifContainer = document.getElementById("gifContainer");
 const heartsContainer = document.getElementById("hearts-container");
-const container = document.querySelector(".container");
 
-// Función para mover el botón NO dentro del contenedor
+// Función segura para mover el botón dentro de la pantalla visible
 function moveNoButton() {
-
-  const containerRect = container.getBoundingClientRect();
 
   const buttonWidth = noBtn.offsetWidth;
   const buttonHeight = noBtn.offsetHeight;
 
-  const maxX = containerRect.width - buttonWidth;
-  const maxY = containerRect.height - buttonHeight;
+  const padding = 20; // margen de seguridad
+
+  const maxX = window.innerWidth - buttonWidth - padding;
+  const maxY = window.innerHeight - buttonHeight - padding;
+
+  const minY = 150; 
+  // evita que se vaya demasiado arriba (zona del navegador)
 
   const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const y = Math.random() * (maxY - minY) + minY;
 
-  noBtn.style.position = "absolute";
+  noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 }
@@ -26,8 +28,8 @@ function moveNoButton() {
 // Desktop
 noBtn.addEventListener("mouseover", moveNoButton);
 
-// Celular
-noBtn.addEventListener("click", function (e) {
+// Mobile
+noBtn.addEventListener("touchstart", function (e) {
   e.preventDefault();
   moveNoButton();
 });
