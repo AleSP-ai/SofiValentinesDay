@@ -3,22 +3,20 @@ const noBtn = document.getElementById("noBtn");
 const gifContainer = document.getElementById("gifContainer");
 const heartsContainer = document.getElementById("hearts-container");
 
-// Función segura para mover el botón dentro de la pantalla visible
-function moveNoButton() {
+let angle = 0; // ángulo de rotación
+let radius = 120; // distancia alrededor del botón SI
 
-  const buttonWidth = noBtn.offsetWidth;
-  const buttonHeight = noBtn.offsetHeight;
+function moveAroundYes() {
 
-  const padding = 20; // margen de seguridad
+  const yesRect = yesBtn.getBoundingClientRect();
 
-  const maxX = window.innerWidth - buttonWidth - padding;
-  const maxY = window.innerHeight - buttonHeight - padding;
+  const centerX = yesRect.left + yesRect.width / 2;
+  const centerY = yesRect.top + yesRect.height / 2;
 
-  const minY = 150; 
-  // evita que se vaya demasiado arriba (zona del navegador)
+  angle += Math.PI / 4; // gira 45° cada vez
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * (maxY - minY) + minY;
+  const x = centerX + radius * Math.cos(angle) - noBtn.offsetWidth / 2;
+  const y = centerY + radius * Math.sin(angle) - noBtn.offsetHeight / 2;
 
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
@@ -26,15 +24,15 @@ function moveNoButton() {
 }
 
 // Desktop
-noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("mouseover", moveAroundYes);
 
 // Mobile
 noBtn.addEventListener("touchstart", function (e) {
   e.preventDefault();
-  moveNoButton();
+  moveAroundYes();
 });
 
-// Al tocar SI
+// Cuando toca SI
 yesBtn.addEventListener("click", () => {
 
   noBtn.style.display = "none";
