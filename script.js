@@ -5,7 +5,7 @@ const heartsContainer = document.getElementById("hearts-container");
 
 let noVisible = true;
 
-// Botón NO escurridizo pero visible
+// Botón NO escurridizo pero siempre visible
 noBtn.addEventListener("mouseenter", function () {
   if (!noVisible) return;
 
@@ -25,20 +25,24 @@ noBtn.addEventListener("mouseenter", function () {
 // Cuando toca SI
 siBtn.addEventListener("click", function () {
 
+  // Desaparece el NO
   noVisible = false;
   noBtn.style.display = "none";
 
+  // Mostrar GIF + mensaje
   resultDiv.innerHTML = `
     <img src="https://media.giphy.com/media/yBwgX64KAPrHW2ltZ2/giphy.gif">
     <p>¡Sabía que ibas a decir que sí! 💘</p>
+    <p style="margin-top:10px; font-weight:500;">Subí el volumen 🎶</p>
   `;
 
+  // Iniciar lluvia
   startHearts();
 
-  // Abrir canción después de 1 segundo
+  // Abrir canción automáticamente
   setTimeout(() => {
     window.open("https://open.spotify.com/track/0uWm6d4k3xP8xGZ6u4EJ3C", "_blank");
-  }, 1000);
+  }, 800);
 });
 
 // Lluvia de corazones
