@@ -1,75 +1,80 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #ffe4e6, #ffffff);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background: #fff0f5;
+  font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
 
 .container {
-  background: rgba(255,255,255,0.9);
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-top: 80px;
   position: relative;
   z-index: 2;
 }
 
 .top-image {
-  width: 180px;
+  width: 200px;
   margin-bottom: 20px;
 }
 
 h1 {
-  font-weight: 700;
-  color: #d6336c;
-  margin-bottom: 25px;
+  color: #e63946;
+  font-size: 2em;
 }
 
-.btn {
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-.btn-si {
-  font-size: 22px;
-  padding: 16px 30px;
-  background: #ff4d6d;
+#yesBtn {
+  background-color: #ff4d6d;
   color: white;
+  font-size: 22px; /* más grande */
+  padding: 15px 35px;
 }
 
-.btn-no {
-  font-size: 16px;
-  padding: 10px 18px;
-  background: #888;
+#noBtn {
+  background-color: #adb5bd;
   color: white;
+  position: relative;
 }
 
-.result img {
-  width: 300px;
-  margin-top: 25px;
-  border-radius: 12px;
+button:hover {
+  transform: scale(1.1);
 }
 
-/* ❤️ Corazones */
+.hidden {
+  display: none;
+}
+
+#gifContainer img {
+  margin-top: 30px;
+  width: 250px;
+  border-radius: 15px;
+}
+
+/* Corazones */
+
 .heart {
   position: fixed;
   top: -10px;
-  font-size: 20px;
   color: red;
   animation: fall linear forwards;
+  pointer-events: none;
 }
 
 @keyframes fall {
   to {
-    transform: translateY(110vh);
-    opacity: 0;
+    transform: translateY(100vh);
   }
 }
