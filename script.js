@@ -41,7 +41,7 @@ siBtn.addEventListener("click", function () {
 
   // Esperar 5 segundos y redirigir
   setTimeout(() => {
-    window.location.href = "https://open.spotify.com/track/0uWm6d4k3xP8xGZ6u4EJ3C";
+    window.location.href = "https://open.spotify.com/intl-es/track/55lijDD6OAjLFFUHU9tcDm?si=cb7b6675f4ae4b25";
   }, 5000);
 });
 
