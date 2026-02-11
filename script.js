@@ -1,63 +1,66 @@
+const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const siBtn = document.getElementById("siBtn");
-const resultDiv = document.getElementById("result");
+const gifContainer = document.getElementById("gifContainer");
 const heartsContainer = document.getElementById("hearts-container");
 
-let noVisible = true;
+// Botón NO se mueve al pasar el mouse
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
 
-// Botón NO escurridizo pero siempre visible
-noBtn.addEventListener("mouseenter", function () {
-  if (!noVisible) return;
-
-  const padding = 20;
-
-  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.position = "fixed";
+  noBtn.style.position = "absolute";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
 
-// Cuando toca SI
-siBtn.addEventListener("click", function () {
+// Al tocar SI
+yesBtn.addEventListener("click", () => {
 
-  // Desaparece el NO
-  noVisible = false;
+  // Ocultar botón NO
   noBtn.style.display = "none";
 
-  // Mostrar GIF + mensaje
-  resultDiv.innerHTML = `
-    <img src="https://media.giphy.com/media/yBwgX64KAPrHW2ltZ2/giphy.gif">
-    <p>¡Sabía que ibas a decir que sí! 💘</p>
-  `;
+  // Mostrar GIF
+  gifContainer.classList.remove("hidden");
 
-  // Iniciar lluvia
+  // Iniciar lluvia de corazones
   startHearts();
 
-  // Esperar 5 segundos y redirigir
+  // Redireccionar a Spotify después de 5 segundos
   setTimeout(() => {
-    window.location.href = "https://open.spotify.com/track/55lijDD6OAjLFFUHU9tcDm?si=gNxrRbmEQ6GAiB4VF-Vj7g";
+    window.location.href = "https://open.spotify.com/intl-es/track/55lijDD6OAjLFFUHU9tcDm?si=371a6824fd0a4cb7";
   }, 5000);
 });
 
-// Lluvia de corazones
+// Función lluvia de corazones
 function startHearts() {
   const interval = setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+
+    // Diferentes emojis
+    const hearts = ["❤️", "💖", "💗", "💘", "💕"];
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+    // Tamaño aleatorio
+    const size = Math.random() * 30 + 15; // 15px a 45px
+    heart.style.fontSize = size + "px";
+
+    // Posición horizontal aleatoria
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+    // Velocidad aleatoria
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    // Opacidad levemente variable
+    heart.style.opacity = Math.random();
+
     heartsContainer.appendChild(heart);
 
     setTimeout(() => {
       heart.remove();
     }, 5000);
-  }, 200);
+
+  }, 150);
 
   setTimeout(() => {
     clearInterval(interval);
