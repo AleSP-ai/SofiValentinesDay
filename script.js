@@ -33,16 +33,16 @@ siBtn.addEventListener("click", function () {
   resultDiv.innerHTML = `
     <img src="https://media.giphy.com/media/yBwgX64KAPrHW2ltZ2/giphy.gif">
     <p>¡Sabía que ibas a decir que sí! 💘</p>
-    <p style="margin-top:10px; font-weight:500;">Subí el volumen 🎶</p>
+    <p style="margin-top:10px; font-weight:500;">Escuchá nuestra canción… 🎶</p>
   `;
 
   // Iniciar lluvia
   startHearts();
 
-  // Abrir canción automáticamente
+  // Esperar 5 segundos y redirigir
   setTimeout(() => {
-    window.open("https://open.spotify.com/track/0uWm6d4k3xP8xGZ6u4EJ3C", "_blank");
-  }, 800);
+    window.location.href = "https://open.spotify.com/track/0uWm6d4k3xP8xGZ6u4EJ3C";
+  }, 5000);
 });
 
 // Lluvia de corazones
