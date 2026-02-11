@@ -2,14 +2,18 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const gifContainer = document.getElementById("gifContainer");
 const heartsContainer = document.getElementById("hearts-container");
+const container = document.querySelector(".container");
 
-// Función para mover el botón NO
+// Función para mover el botón NO dentro del contenedor
 function moveNoButton() {
+
+  const containerRect = container.getBoundingClientRect();
+
   const buttonWidth = noBtn.offsetWidth;
   const buttonHeight = noBtn.offsetHeight;
 
-  const maxX = window.innerWidth - buttonWidth;
-  const maxY = window.innerHeight - buttonHeight;
+  const maxX = containerRect.width - buttonWidth;
+  const maxY = containerRect.height - buttonHeight;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -19,10 +23,10 @@ function moveNoButton() {
   noBtn.style.top = y + "px";
 }
 
-// Desktop (hover)
+// Desktop
 noBtn.addEventListener("mouseover", moveNoButton);
 
-// Celular (touch/click)
+// Celular
 noBtn.addEventListener("click", function (e) {
   e.preventDefault();
   moveNoButton();
