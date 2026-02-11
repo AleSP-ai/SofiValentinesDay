@@ -33,7 +33,6 @@ siBtn.addEventListener("click", function () {
   resultDiv.innerHTML = `
     <img src="https://media.giphy.com/media/yBwgX64KAPrHW2ltZ2/giphy.gif">
     <p>¡Sabía que ibas a decir que sí! 💘</p>
-    <p style="margin-top:10px; font-weight:500;">Escuchá nuestra canción… 🎶</p>
   `;
 
   // Iniciar lluvia
