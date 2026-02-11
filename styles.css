@@ -32,29 +32,29 @@ h1 {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  position: relative;
 }
 
 button {
-  padding: 18px 40px;
+  padding: 20px 45px;
   font-size: 22px;
   border: none;
   border-radius: 40px;
   cursor: pointer;
   transition: 0.3s;
-  min-width: 140px;
+  min-width: 150px;
 }
 
 #yesBtn {
   background-color: #ff4d6d;
   color: white;
-  font-size: 26px;
-  padding: 22px 50px;
+  font-size: 28px;
+  padding: 24px 60px;
 }
 
 #noBtn {
   background-color: #adb5bd;
   color: white;
-  position: relative;
 }
 
 button:hover {
@@ -88,7 +88,7 @@ button:hover {
   }
 }
 
-/* Responsive extra para celulares pequeños */
+/* Responsive para celulares pequeños */
 
 @media (max-width: 480px) {
   h1 {
@@ -96,11 +96,11 @@ button:hover {
   }
 
   button {
-    font-size: 20px;
-    padding: 16px 30px;
+    font-size: 22px;
+    padding: 18px 35px;
   }
 
   #yesBtn {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
